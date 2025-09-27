@@ -17,6 +17,10 @@ class UserDao{
         return({newUser, token})
     }
 
+    async getUserByID(id:string){
+        const user = await UserModel.findById(id)
+        return user
+    }
     async getUserByEmail(email:string){
         const user = await UserModel.find({email: email})
         return user

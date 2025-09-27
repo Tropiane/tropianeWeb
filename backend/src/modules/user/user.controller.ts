@@ -40,11 +40,16 @@ class UserController{
             maxAge: 1000 * 60 * 60 * 24 * 3,
             httpOnly: true,
             signed: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict"
+            secure: true,
+            sameSite: "lax"
         });
 
         res.json({ message: "Login exitoso" });
+    }
+
+    async getUserById(id:string){
+        const user = this.Service.getUserById(id);
+        return user
     }
 
     

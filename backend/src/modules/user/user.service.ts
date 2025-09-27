@@ -32,12 +32,14 @@ class UserService{
             throw new Error("Debe ingresar su contrasena")
         }
 
-        const verifyPassword =await compareHash(data.password, userPassword.toString());
-
-        console.log(verifyPassword);
-        
+        const verifyPassword =await compareHash(data.password, userPassword.toString());        
 
         return user;
+    }
+
+    async getUserById(id:string){
+        const user = await this.DAO.getUserByID(id);
+        return user
     }
 
     async getUserByEmail(email:string){
