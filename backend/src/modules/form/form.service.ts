@@ -16,6 +16,10 @@ class formService{
     async deleteForm(formId: number) {
         return await this.formDao.deleteForm(formId);
     }
+
+    async updateForm(formId: number, comment: string) {
+        return await this.formDao.updateForm(formId, comment);
+    }
 }
 
 export default formService

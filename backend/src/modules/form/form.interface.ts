@@ -4,7 +4,8 @@ interface formInterface {
     email: string;
     phone: string;
     description: string;
-    sendAt: Date
+    sendAt: Date;
+    comments?: string[]
 }
 
 export default formInterface

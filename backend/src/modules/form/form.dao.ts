@@ -11,6 +11,10 @@ class FormDao {
     async deleteForm(formId: number) {
         return await FormSchema.deleteOne({ formId: formId });
     }
+
+    async updateForm(formId: number, comment: string) {
+        return await FormSchema.findOneAndUpdate({ formId: formId }, {$push: {comments: comment}});
+    }
 }
 
 export default FormDao;

@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import formService from "./form.service";
 import formInterface from "./form.interface";
-import { sendFormAlert } from "../../utils/alerts";
 
 class formController {
     private service = new formService();
@@ -34,6 +33,21 @@ class formController {
         } catch (error) {
             console.log(error);
             res.status(500).send(error);
+        }
+    }
+
+    async updateForm(req:Request<{},{}, {id: number, comment: string}>, res:Response){
+        try {
+            const formId = req.body.id;
+            const comment = req.body.comment;
+            
+            
+            return( await this.service.updateForm(formId, comment), res.status(200).send(JSON.stringify({message: "formulario actualizado"})))
+        } catch (error) {
+            
+            console.log(error);
+            throw new Error("Error al crear el formulario")
+            
         }
     }
 }
