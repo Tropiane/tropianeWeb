@@ -18,7 +18,6 @@ const validateAdmin = async (req: Request, res: Response, next: NextFunction)=>{
     if (!user) {
         throw new Error("Usuario no encontrado");
         }
-        console.log(user);
     
     if(user.role != 'admin'){  
         throw new Error("acceso Denegado, no sos admin")
