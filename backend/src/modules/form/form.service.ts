@@ -8,7 +8,12 @@ class formService{
     }
     async createForm(form: formInterface) {
         const allForms = await this.formDao.getForms();
-        form.formId = allForms.length + 1;
+        if (!allForms || allForms.length === 0) {
+            form.formId = 1;
+        } else {
+            form.formId = (allForms[allForms.length - 1]?.formId ?? 0) + 1;
+        }
+        
         form.sendAt = new Date();
         return await this.formDao.createForm(form);
     }

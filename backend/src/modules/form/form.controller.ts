@@ -26,10 +26,10 @@ class formController {
         }
     }
 
-    async deleteForm(req: Request, res: Response) {
+    async deleteForm(req: Request<{},{}, {id: number}>, res: Response) {
         try {
-            const formId = Number(req.body.id);
-            return (await this.service.deleteForm(formId), res.status(200));
+            const formID = req.body.id
+            return (await this.service.deleteForm(formID), res.status(200));
         } catch (error) {
             console.log(error);
             res.status(500).send(error);
